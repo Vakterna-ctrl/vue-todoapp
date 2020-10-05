@@ -2,7 +2,7 @@
 <div>
   <AddTodo @add-todo="AddTodo"/>
   <table id="todo" :newID="[todos.length + 1]">
-  <tr v-for="todo in todos" :key="todo.id">
+  <tr v-for="todo in todos" :key="todo.title ">
     <Todo :todo="todo" @delete-task="deleteTodo"/>
   </tr>
 </table>

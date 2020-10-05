@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'AddTodo',
   data() {
@@ -18,13 +20,14 @@ export default {
   },
   methods: {
     addTodo() {
-      const newTodo = {
-        id: this.newID,
-        title: this.title,
-        completed: false,
-      };
-      this.$emit('add-todo', newTodo);
-      this.title = '';
+      axios.post('https://jsonplaceholder.typicode.com/users/1/todos',
+        {
+          title: this.title,
+          completed: false,
+        }).then((res) => {
+        this.$emit('add-todo', res.data);
+        this.title = '';
+      });
     },
   },
 
