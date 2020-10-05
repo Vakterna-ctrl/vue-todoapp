@@ -20,7 +20,7 @@ export default {
     addTodo() {
       const newTodo = {
         id: this.newID,
-        task: this.title,
+        title: this.title,
         completed: false,
       };
       this.$emit('add-todo', newTodo);

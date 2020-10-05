@@ -1,6 +1,6 @@
 <template>
     <td :class="{'completed':todo.completed}">
-      <input type="checkbox" @click="markComplete"/>{{ todo.task }}
+      <input type="checkbox" @click="markComplete" :checked="todo.completed"/>{{ todo.title }}
       <button class="del" @click="deleteTask">X</button>
       </td>
 </template>

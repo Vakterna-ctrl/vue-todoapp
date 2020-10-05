@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Todo from './todo.vue';
 import AddTodo from './AddTodo.vue';
 
@@ -17,11 +18,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      todos: [
-        { id: 1, task: 'clean the toilet', completed: false },
-        { id: 2, task: 'buy groceries', completed: false },
-        { id: 3, task: 'go to school', completed: true },
-      ],
+      todos: [],
     };
   },
   components: {
@@ -39,6 +36,10 @@ export default {
     AddTodo(newtodo) {
       this.todos = [...this.todos, newtodo];
     },
+  },
+  created() {
+    axios.get('https://jsonplaceholder.typicode.com/users/1/todos')
+      .then((res) => { this.todos = res.data; });
   },
 };
 </script>
